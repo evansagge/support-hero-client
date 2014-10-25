@@ -1,0 +1,10 @@
+<ul>
+  {{#each}}
+    <li>
+      {{#link-to 'schedule' this}}{{format-date date 'MMM D, YYYY'}}{{/link-to}}
+    </li>
+  {{/each}}
+</ul>
+
+<a href='#' {{action 'goToPreviousMonth'}}>Previous Month</a>
+<a href='#' {{action 'goToNextMonth'}}>Next Month</a>
