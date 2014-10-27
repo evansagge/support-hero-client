@@ -1,14 +1,13 @@
-<ul>
-  {{#each}}
-    <li>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <ul class="list-unstyled">
+      {{#each}}
+      <li>
       {{#link-to 'schedule' this}}{{format-date date 'MMM D, YYYY'}}{{/link-to}}
-      -
-      {{link-to user.name 'user.schedules' user}}
-    </li>
-  {{/each}}
-</ul>
 
-<ul class='pager'>
-  <li><a href='#' {{action 'goToPreviousMonth'}}>Previous Month</a></li>
-  <li><a href='#' {{action 'goToNextMonth'}}>Next Month</a></li>
-</ul>
+      <span class="pull-right">{{link-to user.name 'user.schedules' user}}</span>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>

@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   queryParams: {
-    month: { refreshModel: true },
-    year: { refreshModel: true }
+    start_date: { refreshModel: true },
+    end_date: { refreshModel: true }
   },
 
   model: function(params) {
@@ -12,17 +12,11 @@ export default Ember.Route.extend({
 
   setupController: function(controller, model) {
     this._super(controller, model);
-
-    if (Ember.isBlank(controller.get('month'))) {
-      var today = moment();
-      controller.setProperties({ month: today.month() + 1, year: today.year() });
-    }
   },
 
-  resetController: function (controller, isExiting, transition) {
+  resetController: function (controller, isExiting) {
     if (isExiting) {
-      // isExiting would be false if only the route's model was changing
-      controller.setProperties({ year: null, month: null });
+      controller.setProperties({ start_date: null, end_date: null });
     }
   }
 });

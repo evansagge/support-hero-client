@@ -1,9 +1,10 @@
+import Ember from 'ember';
 import SchedulesRoute from '../schedules/index';
 
 export default SchedulesRoute.extend({
   actions: {
-    goToSchedules: function(year, month) {
-      this._goToSchedules(year, month);
+    goToSchedules: function(date) {
+      this._goToSchedules(date);
     }
   },
 
@@ -22,7 +23,7 @@ export default SchedulesRoute.extend({
     controller.set('user', model.user);
   },
 
-  _goToSchedules: function(year, month) {
-    this.transitionTo('user.schedules', { queryParams: { year: year, month: month } });
+  _goToSchedules: function(date) {
+    this.transitionTo('user.schedules', { queryParams: { year: date.year(), month: date.month() + 1 } });
   }
 });

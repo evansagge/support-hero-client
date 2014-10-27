@@ -1,23 +1,10 @@
 import Ember from 'ember';
+import SchedulesController from '../mixins/schedules-controller';
 
-export default Ember.ArrayController.extend({
+export default Ember.ArrayController.extend(SchedulesController, {
   supportHero: null,
 
-  actions: {
-    goToPreviousMonth: function() {
-      this._goToPreviousMonth();
-    },
-
-    goToNextMonth: function() {
-      this._goToNextMonth();
-    }
-  },
-
-  _goToPreviousMonth: function() {
-    this.send('goToSchedules', moment().year(), moment().month());
-  },
-
-  _goToNextMonth: function() {
-    this.send('goToSchedules', moment().year(), moment().month() + 2);
-  }
+  date: function() {
+    return moment();
+  }.property()
 });

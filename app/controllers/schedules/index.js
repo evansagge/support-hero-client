@@ -1,30 +1,27 @@
 import Ember from 'ember';
+import SchedulesController from '../../mixins/schedules-controller';
 
-export default Ember.ArrayController.extend({
+export default Ember.ArrayController.extend(
+  SchedulesController, {
 
-  queryParams: ['month', 'year'],
+  queryParams: ['start_date', 'end_date'],
 
-  month: null,
+  start_date: null,
 
-  year: null,
+  end_date: null,
 
-  actions: {
-    goToPreviousMonth: function() {
-      this._goToPreviousMonth();
-    },
+  calendarEvents: function() {
+    return this.get('content').map(function(supportSchedule) {
+      return {
+        id:     'support-schedule-' + supportSchedule.get('id'),
+        title:  supportSchedule.get('user.name'),
+        allDay: true,
+        start:  supportSchedule.get('date')
+      };
+    });
+  }.property('content.length'),
 
-    goToNextMonth: function() {
-      this._goToNextMonth();
-    }
-  },
-
-  _goToPreviousMonth: function() {
-    var date = moment({ year: this.get('year'), month: parseInt(this.get('month')) - 2 });
-    this.send('goToSchedules', date.year(), date.month() + 1);
-  },
-
-  _goToNextMonth: function() {
-    var date = moment({ year: this.get('year'), month: parseInt(this.get('month'))});
-    this.send('goToSchedules', date.year(), date.month() + 1);
-  }
+  date: function() {
+    return moment({ year: this.get('year'), month: parseInt(this.get('month')) - 1 });
+  }.property('year', 'month'),
 });
