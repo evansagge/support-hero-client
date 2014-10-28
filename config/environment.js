@@ -27,7 +27,19 @@ module.exports = function(environment) {
       'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com",
       'media-src': "'self'"
     },
+
   };
+
+  ENV['simple-auth'] = {
+    authorizer: 'simple-auth-authorizer:oauth2-bearer',
+    routeAfterAuthentication: 'index'
+  }
+
+  ENV['simple-auth-oauth2'] = {
+    serverTokenEndpoint: '/oauth/token',
+    serverTokenRevocationEndpoint: '/oauth/revoke',
+    refreshAccessTokens: true
+  }
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
@@ -35,6 +47,10 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    ENV.contentSecurityPolicy['connect-src'] = "'self' ws://localhost:35729 http://localhost:3000";
+
+
   }
 
   if (environment === 'test') {
@@ -47,8 +63,6 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
-
-    ENV.contentSecurityPolicy['connect-src'] = "'self' ws://localhost:35729 http://localhost:3000";
   }
 
   if (environment === 'production') {

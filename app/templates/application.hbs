@@ -1,3 +1,4 @@
+{{#if session.isAuthenticated}}
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -17,9 +18,14 @@
         <li>{{link-to 'Users' 'users'}}</li>
         <li>{{link-to 'Schedules' 'schedules' (query-params null=null)}}</li>
       </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href='#' {{action 'invalidateSession'}}>Logout</a></li>
+      </ul>
+      <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">{{currentUser.name}}</a></p>
     </div>
   </div>
 </nav>
+{{/if}}
 
 <div class="container">
   {{outlet}}
