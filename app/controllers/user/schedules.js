@@ -1,4 +1,4 @@
-import SchedulesController from '../schedules/index';
+import SchedulesController from '../index';
 
 export default SchedulesController.extend({
   user: null

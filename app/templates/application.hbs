@@ -14,14 +14,13 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li>{{link-to 'Home' 'index'}}</li>
+        <li>{{link-to 'Home' 'index' (query-params start_date=startOfMonth end_date=endOfMonth)}}</li>
         <li>{{link-to 'Users' 'users'}}</li>
-        <li>{{link-to 'Schedules' 'schedules' (query-params null=null)}}</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href='#' {{action 'invalidateSession'}}>Logout</a></li>
       </ul>
-      <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">{{currentUser.name}}</a></p>
+      <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">{{session.currentUser.name}}</a></p>
     </div>
   </div>
 </nav>
