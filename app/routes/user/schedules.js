@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixin';
-import SchedulesRoute from '../index';
+import SchedulesRoute from '../schedules';
 
 export default SchedulesRoute.extend(AuthenticatedRouteMixin, {
   actions: {

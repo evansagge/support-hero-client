@@ -34,3 +34,9 @@ html, body {
 .form-signin input[type="password"] {
   margin-bottom: 10px;
 }
+
+table {
+  td {
+    vertical-align: middle !important;
+  }
+}
