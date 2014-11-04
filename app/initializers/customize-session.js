@@ -4,11 +4,9 @@ var SessionWithCurrentUser = Session.extend({
   currentUser: null,
 
   setCurrentUser: function() {
-    var self = this;
+    var currentUser = this.container.lookup('store:main').find('user', 'me');
 
-    this.container.lookup('store:main').find('user', 'me').then(function(currentUser) {
-      self.set('currentUser', currentUser);
-    });
+    this.set('currentUser', currentUser);
   }.observes('content.access_token')
 });
 

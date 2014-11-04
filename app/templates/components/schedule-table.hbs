@@ -1,0 +1,33 @@
+<table class="table table-hover table-schedules">
+  <thead>
+    <tr>
+      <th>Date</th>
+      {{#if showUser}}
+      <th>Support Hero</th>
+      {{/if}}
+      {{#if showActions}}
+      <th width='200'>&nbsp;</th>
+      {{/if}}
+    </tr>
+  </thead>
+  <tbody>
+  {{#each content}}
+  <tr>
+    <td>{{format-date date 'MMM D, YYYY'}}</td>
+    {{#if controller.showUser}}
+    <td>{{link-to user.name 'user' user}}</td>
+    {{/if}}
+    {{#if controller.showActions}}
+    <td class='actions'>
+      {{#link-to 'schedule.undoable' this class="btn btn-default btn-sm"}}
+      Undoable
+      {{/link-to}}
+      {{#link-to 'schedule.swap' this class="btn btn-default btn-sm"}}
+      Swap Schedule
+      {{/link-to}}
+    </td>
+    {{/if}}
+  </tr>
+  {{/each}}
+  </tbody>
+</table>

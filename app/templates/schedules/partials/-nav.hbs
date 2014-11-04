@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-12">
+    <nav>
+      <ul class="pager">
+        <li class="previous">
+          {{#link-to 'schedules' (query-params start_date=previousMonth)}}
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            {{format-date previousMonth 'MMMM YYYY'}}
+          {{/link-to}}
+        </li>
+        <li><a>{{format-date currentMonth 'MMMM YYYY'}}</a></li>
+        <li class="next">
+          {{#link-to 'schedules' (query-params start_date=nextMonth)}}
+            {{format-date nextMonth 'MMMM YYYY'}}
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          {{/link-to}}
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+

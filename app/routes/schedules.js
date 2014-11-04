@@ -3,21 +3,11 @@ import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixi
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   queryParams: {
-    start_date: { refreshModel: true },
-    end_date: { refreshModel: true }
+    start_date: { refreshModel: true }
   },
 
   model: function(params) {
     return this.store.find('supportSchedule', params);
-  },
-
-  setupController: function(controller, model) {
-    this._super(controller, model);
-
-    var supportHeroId = moment().format('YYYY-MM-DD'),
-        supportHero = this.store.getById('supportSchedule', supportHeroId);
-
-    controller.set('supportHero', supportHero);
   },
 
   resetController: function (controller, isExiting) {

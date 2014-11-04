@@ -2,49 +2,37 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
 
-  queryParams: ['start_date', 'end_date'],
+  queryParams: ['start_date'],
 
-  start_date: function() {
-    return moment().startOf('month').format('YYYY-MM-DD');
-  }.property(),
+  start_date: null,
 
-  end_date: function() {
-    return moment().endOf('month').format('YYYY-MM-DD');
-  }.property(),
+  user: Ember.computed.alias('session.currentUser'),
 
-  supportHero: null,
+  isCurrentUser: function() {
+    return this.get('user.id') === this.get('session.currentUser.id');
+  }.property('user.id'),
 
-  actions: {
-    goToPreviousMonth: function() {
-      this._goToPreviousMonth();
-    },
+  userName: function() {
+    return this.get('isCurrentUser') ? 'Your' : this.get('user.name') + '\'s';
+  }.property('isCurrentUser', 'user.id'),
 
-    goToNextMonth: function() {
-      this._goToNextMonth();
-    }
+  userSchedules: function() {
+    var self = this;
 
-  },
-
-  _goToPreviousMonth: function() {
-    this.send('goToSchedules', this.get('date').subtract(1, 'month'));
-  },
-
-  _goToNextMonth: function() {
-    this.send('goToSchedules', this.get('date').add(1, 'month'));
-  },
-
-  calendarEvents: function() {
-    return this.get('content').map(function(supportSchedule) {
-      return {
-        id:     'support-schedule-' + supportSchedule.get('id'),
-        title:  supportSchedule.get('user.name'),
-        allDay: true,
-        start:  supportSchedule.get('date')
-      };
+    return this.get('content').filter(function(schedule) {
+      return schedule.get('user.id') === self.get('user.id');
     });
   }.property('content.length'),
 
-  date: function() {
-    return moment({ year: this.get('year'), month: parseInt(this.get('month')) - 1 });
-  }.property('year', 'month'),
+  currentMonth: function() {
+    return this.get('start_date') ? moment(this.get('start_date')).date(1) : moment().date(1);
+  }.property('start_date'),
+
+  previousMonth: function() {
+    return moment(this.get('currentMonth')).subtract(1, 'month').format('YYYY-MM-DD');
+  }.property('currentMonth'),
+
+  nextMonth: function() {
+    return moment(this.get('currentMonth')).add(1, 'month').format('YYYY-MM-DD');
+  }.property('currentMonth')
 });

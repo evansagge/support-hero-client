@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class='jumbotron'>
+      <h1><small>Today's Support Hero:</small> {{link-to supportHero.user.name 'user' supportHero.user}}</h1>
+    </div>
+  </div>
+</div>
+
+{{partial 'schedules/partials/nav'}}
+
+<div class="row">
+  {{partial 'schedules/partials/user-schedules'}}
+  {{partial 'schedules/partials/all-schedules'}}
+</div>
+
