@@ -1,0 +1,21 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button class="close" type="button" {{action 'cancel'}}>x</button>
+      <h4 class="modal-title">Mark Schedule As Undoable</h4>
+    </div>
+    <div class="modal-body">
+      <form role="form">
+        <p>You are about to request approval that there should be no support scheduled for the date of <strong>{{format-date date "MMMM DD, YYYY"}}</strong>.</p>
+        <div class="form-group">
+          <label for="reason">State the reason why this date should be skipped:</label>
+          {{textarea value=reason class="form-control" row=3}}
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-default" {{action 'cancel'}}>Cancel</a>
+      <button {{bind-attr class=":btn :btn-primary isValid::disabled"}} {{action 'submit'}}>Submit</a>
+    </div>
+  </div>
+</div>

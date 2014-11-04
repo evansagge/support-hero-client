@@ -19,12 +19,12 @@
     {{/if}}
     {{#if controller.showActions}}
     <td class='actions'>
-      {{#link-to 'schedule.undoable' this class="btn btn-default btn-sm"}}
-      Undoable
-      {{/link-to}}
-      {{#link-to 'schedule.swap' this class="btn btn-default btn-sm"}}
-      Swap Schedule
-      {{/link-to}}
+      <a href="#" {{action 'markUndoable' this}} class="btn btn-danger btn-sm">
+        Undoable
+      </a>
+      <a href="#" {{action 'swap' this}} class="btn btn-info btn-sm">
+        Swap Schedule
+      </a>
     </td>
     {{/if}}
   </tr>

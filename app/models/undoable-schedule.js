@@ -4,7 +4,7 @@ var a = DS.attr, b = DS.belongsTo;
 
 export default DS.Model.extend({
   date:     a('moment'),
-  position: a('number'),
+  reason:   a('string'),
+  approved: a('boolean'),
   user:     b('user')
 });
-

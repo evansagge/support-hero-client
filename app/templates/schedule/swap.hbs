@@ -1,0 +1,22 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button class="close" type="button" {{action 'cancel'}}>x</button>
+      <h4 class="modal-title">Swap Schedule</h4>
+    </div>
+    <div class="modal-body">
+      <form role="form">
+        <p>You are about to request for a swap with your schedule on {{format-date originalDate "MMMM DD, YYYY"}}</strong>.</p>
+        <div class="form-group">
+          <label for="reason">Select a date to swap with:</label>
+          {{input type='date' value=targetDate class="form-control"}}
+        </div>
+        <p>{{targetUser.name}}</p>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-default" {{action 'cancel'}}>Cancel</a>
+      <button {{bind-attr class=":btn :btn-primary isValid::disabled"}} {{action 'submit'}}>Submit</a>
+    </div>
+  </div>
+</div>

@@ -9,5 +9,15 @@ export default Ember.Component.extend({
 
   showActions: true,
 
-  content: []
+  content: [],
+
+  actions: {
+    markUndoable: function(schedule) {
+      this.sendAction('markUndoable', schedule);
+    },
+
+    swap: function(schedule, targetSchedule) {
+      this.sendAction('swap', schedule, targetSchedule);
+    }
+  }
 });
