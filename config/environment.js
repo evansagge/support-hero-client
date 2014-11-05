@@ -67,10 +67,10 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV['simple-auth-oauth2'] = {
-      serverTokenEndpoint: 'https://support-api.herokupapp.com/oauth/token',
-      serverTokenRevocationEndpoint: 'https://support-api.herokupapp.com/oauth/revoke',
+      serverTokenEndpoint: 'https://support-hero-api.herokupapp.com/oauth/token',
+      serverTokenRevocationEndpoint: 'https://support-hero-api.herokupapp.com/oauth/revoke',
       refreshAccessTokens: true,
-      crossOriginWhitelist: ['https://support-api.herokupapp.com/']
+      crossOriginWhitelist: ['https://support-hero-api.herokupapp.com/']
     }
   }
 
