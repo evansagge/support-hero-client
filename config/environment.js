@@ -30,12 +30,6 @@ module.exports = function(environment) {
 
   };
 
-  ENV['simple-auth-oauth2'] = {
-    serverTokenEndpoint: '/api/oauth/token',
-    serverTokenRevocationEndpoint: '/api/oauth/revoke',
-    refreshAccessTokens: true,
-  }
-
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -45,25 +39,7 @@ module.exports = function(environment) {
 
     ENV.contentSecurityPolicy['connect-src'] = "'self' ws://localhost:35729 http://localhost:3000";
 
-    ENV['simple-auth'] = {
-      authorizer: 'simple-auth-authorizer:oauth2-bearer',
-      routeAfterAuthentication: 'index',
-      crossOriginWhitelist: ['http://localhost:3000']
-    }
-  }
-
-  if (environment === 'staging') {
-    // ENV['simple-auth-oauth2'] = {
-    //   serverTokenEndpoint: 'https://support-hero-api.herokuapp.com/oauth/token',
-    //   serverTokenRevocationEndpoint: 'https://support-hero-api.herokuapp.com/oauth/revoke',
-    //   refreshAccessTokens: true,
-    //   crossOriginWhitelist: ['https://support-hero-api.herokuapp.com/']
-    // }
-    ENV['simple-auth'] = {
-      authorizer: 'simple-auth-authorizer:oauth2-bearer',
-      routeAfterAuthentication: 'index',
-      crossOriginWhitelist: ['https://support-hero-api.herokuapp.com']
-    }
+    ENV.APP.API_HOST = 'http://localhost:3000';
   }
 
   if (environment === 'test') {
@@ -78,14 +54,27 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
+  if (environment === 'staging') {
+    ENV.APP.API_HOST = 'https://support-hero-api.herokuapp.com';
+  }
+
   if (environment === 'production') {
-    // ENV['simple-auth-oauth2'] = {
-    //   serverTokenEndpoint: 'https://support-hero-api.herokupapp.com/oauth/token',
-    //   serverTokenRevocationEndpoint: 'https://support-hero-api.herokupapp.com/oauth/revoke',
-    //   refreshAccessTokens: true,
-    //   crossOriginWhitelist: ['https://support-hero-api.herokupapp.com/']
-    // }
+    ENV.APP.API_HOST = 'https://support-hero-api.herokuapp.com';
+  }
+
+  ENV['simple-auth'] = {
+    authorizer: 'simple-auth-authorizer:oauth2-bearer',
+    routeAfterAuthentication: 'index',
+    crossOriginWhitelist: [ENV.APP.API_HOST]
+  }
+
+  ENV['simple-auth-oauth2'] = {
+    serverTokenEndpoint: ENV.APP.API_HOST + '/api/oauth/token',
+    serverTokenRevocationEndpoint: ENV.APP.API_HOST + '/api/oauth/revoke',
+    refreshAccessTokens: true
   }
 
   return ENV;
 };
+
+
