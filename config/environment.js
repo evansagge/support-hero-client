@@ -45,8 +45,8 @@ module.exports = function(environment) {
     ENV.contentSecurityPolicy['connect-src'] = "'self' ws://localhost:35729 http://localhost:3000";
 
     ENV['simple-auth-oauth2'] = {
-      serverTokenEndpoint: '/oauth/token',
-      serverTokenRevocationEndpoint: '/oauth/revoke',
+      serverTokenEndpoint: '/api/oauth/token',
+      serverTokenRevocationEndpoint: '/api/oauth/revoke',
       refreshAccessTokens: true
     }
   }
@@ -73,12 +73,12 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV['simple-auth-oauth2'] = {
-      serverTokenEndpoint: 'https://support-hero-api.herokupapp.com/oauth/token',
-      serverTokenRevocationEndpoint: 'https://support-hero-api.herokupapp.com/oauth/revoke',
-      refreshAccessTokens: true,
-      crossOriginWhitelist: ['https://support-hero-api.herokupapp.com/']
-    }
+    // ENV['simple-auth-oauth2'] = {
+    //   serverTokenEndpoint: 'https://support-hero-api.herokupapp.com/oauth/token',
+    //   serverTokenRevocationEndpoint: 'https://support-hero-api.herokupapp.com/oauth/revoke',
+    //   refreshAccessTokens: true,
+    //   crossOriginWhitelist: ['https://support-hero-api.herokupapp.com/']
+    // }
   }
 
   return ENV;
