@@ -4,8 +4,6 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp();
 app.import('bower_components/moment/moment.js');
-app.import('bower_components/fullcalendar/dist/fullcalendar.min.js');
-app.import('bower_components/fullcalendar/dist/fullcalendar.min.css');
 app.import('bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js');
 app.import('bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap.scss');
 
