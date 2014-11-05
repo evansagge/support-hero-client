@@ -1,9 +1,9 @@
 import Ember from 'ember';
-import { initialize } from 'support-hero-client/initializers/inject-current-user';
+import { initialize } from 'support-hero-client/initializers/customize-session';
 
 var container, application;
 
-module('InjectCurrentUserInitializer', {
+module('CustomizeSessionInitializer', {
   setup: function() {
     Ember.run(function() {
       container = new Ember.Container();
