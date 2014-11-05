@@ -9,7 +9,16 @@
 {{partial 'schedules/partials/nav'}}
 
 <div class="row">
-  {{partial 'schedules/partials/user-schedules'}}
-  {{partial 'schedules/partials/all-schedules'}}
+  <div class="col-md-6">
+    {{#if session.currentUser.isManager}}
+      {{partial 'undoables/partials/pending'}}
+      {{partial 'undoables/partials/approved'}}
+    {{else}}
+      {{partial 'schedules/partials/user-schedules'}}
+    {{/if}}
+  </div>
+  <div class="col-md-6">
+    {{partial 'schedules/partials/all-schedules'}}
+  </div>
 </div>
 

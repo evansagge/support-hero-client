@@ -1,9 +1,7 @@
-<div class="col-md-6">
-  <div class="panel panel-success">
-    <div class="panel-heading">
-      <h4><u>{{userName}}</u> schedule for the month of {{format-date currentMonth 'MMMM YYYY'}}</h4>
-    </div>
-    {{schedule-table content=userSchedules showUser=false markUndoable="markUndoableSchedule" swap="swapSchedule"}}
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h4><u>{{userName}}</u> schedule for the month of {{format-date currentMonth 'MMMM YYYY'}}</h4>
   </div>
+  {{schedule-table content=userSchedules showUser=false markUndoable="markUndoableSchedule" swap="swapSchedule"}}
 </div>
 

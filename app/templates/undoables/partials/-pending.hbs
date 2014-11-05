@@ -1,0 +1,33 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h4>Pending Undoable Schedule Requests</h4>
+  </div>
+  <table class="table table-hover table-schedules">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Requested By</th>
+        <th>Reason</th>
+        <th width='150'>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each pendingUndoableSchedules}}
+    <tr>
+      <td>{{format-date date 'MMM D, YYYY'}}</td>
+      <td>{{link-to user.name 'user' user}}</td>
+      <td>{{reason}}</td>
+      <td class='actions'>
+        <a href="#" {{action 'rejectUndoableSchedule' this}} class="btn btn-danger btn-sm">
+          Reject
+        </a>
+        <a href="#" {{action 'approveUndoableSchedule' this}} class="btn btn-success btn-sm">
+          Approve
+        </a>
+      </td>
+    </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</div>
+

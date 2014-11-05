@@ -16,6 +16,15 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       this.send('openModal', 'schedule.undoable', controller);
     },
 
+    approveUndoableSchedule: function(undoable) {
+      undoable.set('approved', true);
+      undoable.save();
+    },
+
+    rejectUndoableSchedule: function(undoable) {
+      undoable.destroyRecord();
+    },
+
     swapSchedule: function(schedule) {
       var swap = this.store.createRecord('swappedSchedule', {
             originalUser: schedule.get('user'),

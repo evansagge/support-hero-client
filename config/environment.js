@@ -32,7 +32,7 @@ module.exports = function(environment) {
 
   ENV['simple-auth'] = {
     authorizer: 'simple-auth-authorizer:oauth2-bearer',
-    routeAfterAuthentication: 'schedules',
+    routeAfterAuthentication: 'index',
     session: 'session:withCurrentUser'
   }
 
