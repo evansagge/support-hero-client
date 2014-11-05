@@ -35,8 +35,6 @@ module.exports = function(environment) {
     routeAfterAuthentication: 'index'
   }
 
-
-
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -55,10 +53,10 @@ module.exports = function(environment) {
 
   if (environment === 'staging') {
     ENV['simple-auth-oauth2'] = {
-      serverTokenEndpoint: 'https://support-hero-api.herokupapp.com/oauth/token',
-      serverTokenRevocationEndpoint: 'https://support-hero-api.herokupapp.com/oauth/revoke',
+      serverTokenEndpoint: 'https://support-hero-api.herokuapp.com/oauth/token',
+      serverTokenRevocationEndpoint: 'https://support-hero-api.herokuapp.com/oauth/revoke',
       refreshAccessTokens: true,
-      crossOriginWhitelist: ['https://support-hero-api.herokupapp.com/']
+      crossOriginWhitelist: ['https://support-hero-api.herokuapp.com/']
     }
   }
 
