@@ -35,11 +35,7 @@ module.exports = function(environment) {
     routeAfterAuthentication: 'index'
   }
 
-  ENV['simple-auth-oauth2'] = {
-    serverTokenEndpoint: '/oauth/token',
-    serverTokenRevocationEndpoint: '/oauth/revoke',
-    refreshAccessTokens: true
-  }
+
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
@@ -50,7 +46,11 @@ module.exports = function(environment) {
 
     ENV.contentSecurityPolicy['connect-src'] = "'self' ws://localhost:35729 http://localhost:3000";
 
-
+    ENV['simple-auth-oauth2'] = {
+      serverTokenEndpoint: '/oauth/token',
+      serverTokenRevocationEndpoint: '/oauth/revoke',
+      refreshAccessTokens: true
+    }
   }
 
   if (environment === 'test') {
@@ -66,7 +66,12 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV['simple-auth-oauth2'] = {
+      serverTokenEndpoint: 'https://support-api.herokupapp.com/oauth/token',
+      serverTokenRevocationEndpoint: 'https://support-api.herokupapp.com/oauth/revoke',
+      refreshAccessTokens: true,
+      crossOriginWhitelist: ['https://support-api.herokupapp.com/']
+    }
   }
 
   return ENV;
