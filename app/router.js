@@ -7,6 +7,7 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('login');
+  this.route('index', { path: '/' });
   this.resource('schedules', { path: 'schedules' }, function() {
     this.resource('schedule', { path: ':schedule_id' });
   });
@@ -15,7 +16,7 @@ Router.map(function() {
     this.resource('user', { path: ':user_id' }, function() {
       this.route('edit');
     });
-  })
+  });
 });
 
 export default Router;

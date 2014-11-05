@@ -2,8 +2,12 @@ import Ember from 'ember';
 import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
-  beforeModel: function() {
-    return this.get('session.currentUser');
+  beforeModel: function(transition) {
+    this._super(transition);
+
+    // if (this.get('session.isAuthenticated')) {
+      return this.get('session.currentUser');
+    // }
   },
 
   actions: {
