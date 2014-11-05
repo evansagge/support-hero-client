@@ -19,13 +19,13 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   },
 
   model: function() {
-    return this.store.find('swappedSchedule', { original_user: this.get('session.currentUser.id') });
+    return this.store.find('swappedSchedule', { original_user: this.get('currentUser.id') });
   },
 
   setupController: function(controller, model) {
     this._super(controller, model);
 
-    this.store.find('swappedSchedule', { target_user: this.get('session.currentUser.id'), pending: true }).
+    this.store.find('swappedSchedule', { target_user: this.get('currentUser.id'), pending: true }).
       then(function(swappedSchedules) {
       controller.set('requestedSwappedSchedules', swappedSchedules);
     });

@@ -6,10 +6,10 @@ export default Ember.ArrayController.extend({
 
   start_date: null,
 
-  user: Ember.computed.alias('session.currentUser'),
+  user: Ember.computed.alias('currentUser'),
 
   isCurrentUser: function() {
-    return this.get('user.id') === this.get('session.currentUser.id');
+    return this.get('user.id') === this.get('currentUser.id');
   }.property('user.id'),
 
   userName: function() {

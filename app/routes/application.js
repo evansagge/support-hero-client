@@ -5,9 +5,9 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   beforeModel: function(transition) {
     this._super(transition);
 
-    // if (this.get('session.isAuthenticated')) {
-      return this.get('session.currentUser');
-    // }
+    if (this.get('session.isAuthenticated')) {
+      return this.get('currentUser.model');
+    }
   },
 
   actions: {

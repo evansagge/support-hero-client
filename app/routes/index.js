@@ -12,7 +12,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   setupController: function(controller, model) {
     controller.setProperties({
       model: model.schedules,
-      user: this.get('session.currentUser'),
+      user: this.get('currentUser'),
       supportHero: model.supportHero
     });
 
