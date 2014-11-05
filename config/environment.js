@@ -30,9 +30,10 @@ module.exports = function(environment) {
 
   };
 
-  ENV['simple-auth'] = {
-    authorizer: 'simple-auth-authorizer:oauth2-bearer',
-    routeAfterAuthentication: 'index'
+  ENV['simple-auth-oauth2'] = {
+    serverTokenEndpoint: '/api/oauth/token',
+    serverTokenRevocationEndpoint: '/api/oauth/revoke',
+    refreshAccessTokens: true,
   }
 
   if (environment === 'development') {
@@ -44,10 +45,10 @@ module.exports = function(environment) {
 
     ENV.contentSecurityPolicy['connect-src'] = "'self' ws://localhost:35729 http://localhost:3000";
 
-    ENV['simple-auth-oauth2'] = {
-      serverTokenEndpoint: '/api/oauth/token',
-      serverTokenRevocationEndpoint: '/api/oauth/revoke',
-      refreshAccessTokens: true
+    ENV['simple-auth'] = {
+      authorizer: 'simple-auth-authorizer:oauth2-bearer',
+      routeAfterAuthentication: 'index',
+      crossOriginWhitelist: ['http://localhost:3000']
     }
   }
 
@@ -58,6 +59,11 @@ module.exports = function(environment) {
     //   refreshAccessTokens: true,
     //   crossOriginWhitelist: ['https://support-hero-api.herokuapp.com/']
     // }
+    ENV['simple-auth'] = {
+      authorizer: 'simple-auth-authorizer:oauth2-bearer',
+      routeAfterAuthentication: 'index',
+      crossOriginWhitelist: ['https://support-hero-api.herokuapp.com']
+    }
   }
 
   if (environment === 'test') {
