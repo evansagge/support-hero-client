@@ -6,6 +6,8 @@ var app = new EmberApp();
 app.import('bower_components/moment/moment.js');
 app.import('bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js');
 app.import('bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap.scss');
+app.import('bower_components/ember-simple-auth/simple-auth.js');
+app.import('bower_components/ember-simple-auth/simple-auth-oauth2.js');
 
 // Use `app.import` to add additional libraries to the generated
 // output files.
