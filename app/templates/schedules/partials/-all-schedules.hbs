@@ -2,6 +2,6 @@
   <div class="panel-heading">
     <h4>All schedule for the month of {{format-date currentMonth 'MMMM YYYY'}}</h4>
   </div>
-  {{schedule-table content=content showActions=false}}
+  {{schedule-table content=content showActions=false markUndoable="markUndoableSchedule" swap="swapSchedule"}}
 </div>
 
